@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class commonController {
 
-    @GetMapping("")
+    @GetMapping("/")
     public ResponseEntity<JSONObject> v4loMain(){
         JSONObject v4loRootResponse = new JSONObject();
         v4loRootResponse.put("project","v4loMain");
         v4loRootResponse.put("status","running");
         return new ResponseEntity<>(v4loRootResponse,HttpStatus.OK);
     }
+
+    
 }
