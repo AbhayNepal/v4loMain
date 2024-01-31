@@ -16,6 +16,4 @@ public class commonController {
         v4loRootResponse.put("status","running");
         return new ResponseEntity<>(v4loRootResponse,HttpStatus.OK);
     }
-
-    
 }
