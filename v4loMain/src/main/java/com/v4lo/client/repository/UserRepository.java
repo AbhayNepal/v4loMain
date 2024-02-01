@@ -1,8 +1,7 @@
-package com.v4lo.client.user.repository;
+package com.v4lo.client.repository;
 
-import com.v4lo.client.user.entity.User;
+import com.v4lo.client.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
 
 @Repository

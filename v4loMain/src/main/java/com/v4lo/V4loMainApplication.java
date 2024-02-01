@@ -1,14 +1,12 @@
-package com.v4lo.v4loMain;
+package com.v4lo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication(scanBasePackages = "com.v4lo")
-@EnableJpaRepositories(basePackages = "com.v4lo")
+@SpringBootApplication
+//public class V4loMainApplication {
 public class V4loMainApplication extends SpringBootServletInitializer {
 
 	@Override

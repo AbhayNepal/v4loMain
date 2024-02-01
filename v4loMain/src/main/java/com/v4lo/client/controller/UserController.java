@@ -1,18 +1,22 @@
-package com.v4lo.client.user.controller;
+package com.v4lo.client.controller;
 
-import com.v4lo.client.user.entity.User;
-import com.v4lo.client.user.repository.UserRepository;
+import com.v4lo.client.entity.User;
+import com.v4lo.client.repository.UserRepository;
+import com.v4lo.client.services.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/user")
+@RestController
 public class UserController {
 
     @Autowired
     UserRepository userRepository;
 
-    @PostMapping("/add")
+    @Autowired
+    TestService testService;
+    @RequestMapping(method = RequestMethod.GET,value = "/add")
     public void addUser(){
         User user = new User();
         user.setFirstName("arch");
@@ -20,6 +24,6 @@ public class UserController {
         user.setEmail("gmai.com");
         user.set2faEnabled(true);
         user.setFalseLoginAttempts(0);
-        userRepository.saveAndFlush(user);
+        testService.testAddData();
     }
 }

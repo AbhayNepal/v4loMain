@@ -1,4 +1,4 @@
-package com.v4lo.client.user.entity;
+package com.v4lo.client.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
