@@ -2,11 +2,12 @@ package com.v4lo.client.user.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+
 @Data
 @Entity
 @Table(name = "user", schema = "client")
 public class User {
-    @Id
+    @jakarta.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
@@ -28,5 +29,4 @@ public class User {
     @Column(name = "false_login_attempts")
     private Integer falseLoginAttempts;
 
-    
 }
