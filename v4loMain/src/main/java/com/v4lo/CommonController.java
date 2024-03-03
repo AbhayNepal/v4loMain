@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CommonController {
-    @RequestMapping(method = RequestMethod.GET,value = "/")
+    @RequestMapping(method = RequestMethod.GET,value = "/home")
     public String home(){
         return new String("{" +
                 "project: v4lo\n" +

@@ -1,14 +1,15 @@
 package com.v4lo.appuser.Entity;
 
 import com.v4lo.appuser.AppUserRole;
-import jakarta.persistence.*;
 import lombok.Data;
+
+import javax.persistence.*;
 
 @Data
 @Entity
 @Table(name = "users")
 public class Users {
-    @jakarta.persistence.Id
+    @javax.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
     private String name;
