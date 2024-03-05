@@ -17,4 +17,13 @@ public class UserControlller {
     public ResponseEntity<JSONObject> registerNewUser(@RequestBody Users users){
         return  appUserService.registerUser(users);
     }
+
+    @RequestMapping(method = RequestMethod.GET,value = "/user")
+    public String user(){
+        return "Hello User";
+    }
+    @RequestMapping(method = RequestMethod.GET,value = "/admin")
+    public String admin(){
+        return "Hello Admin";
+    }
 }

@@ -1,4 +1,5 @@
 package com.v4lo.security;
+import com.v4lo.appuser.AppUserRole;
 import com.v4lo.appuser.service.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -14,6 +15,8 @@ public class SecurityConfiguration{
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests(auth-> auth.antMatchers("/home").permitAll()
+                        .antMatchers("/user/**").hasAnyRole(AppUserRole.USER.getValue(),AppUserRole.ADMIN.getValue())
+                        .antMatchers("/admin/**").hasRole(AppUserRole.USER.getValue())
                         .antMatchers("/register").permitAll()
                 .anyRequest().authenticated())
                 .userDetailsService(appUserService).formLogin().and()

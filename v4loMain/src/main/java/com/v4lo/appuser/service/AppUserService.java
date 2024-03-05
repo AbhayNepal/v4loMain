@@ -1,5 +1,6 @@
 package com.v4lo.appuser.service;
 
+import com.v4lo.appuser.AppUserRole;
 import com.v4lo.appuser.Entity.Users;
 import com.v4lo.appuser.SecurityUser;
 import com.v4lo.appuser.repository.AppUserRepository;
@@ -12,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -19,6 +22,8 @@ import org.springframework.stereotype.Service;
 public class AppUserService implements UserDetailsService {
     @Autowired
     AppUserRepository appUserRepository;
+
+    PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     Logger logger = LoggerFactory.getLogger(AppUserService.class);
 
     @Override
@@ -30,6 +35,9 @@ public class AppUserService implements UserDetailsService {
                 )));
     }
 
+
+
+
     public ResponseEntity<JSONObject> registerUser(Users user) {
         JSONObject jsonObjectResponse = new JSONObject();
         if (user != null) {
@@ -39,6 +47,8 @@ public class AppUserService implements UserDetailsService {
                 logger.info("found registered email");
                 return new ResponseEntity<>(jsonObjectResponse, HttpStatus.NOT_ACCEPTABLE);
             } else {
+                user.setAppUserRole(AppUserRole.USER);
+                user.setPassword(passwordEncoder.encode(user.getPassword()));
                 Users returnedUser = appUserRepository.saveAndFlush(user);
                 if (returnedUser != null) {
                     jsonObjectResponse.put("Message","Error");
